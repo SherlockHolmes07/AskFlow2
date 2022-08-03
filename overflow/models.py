@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    """name(string), joined_date(auto),
+    """joined_date(auto),
     answers(default=0), questions(default=0),
     """
     joined_date = models.DateTimeField(auto_now_add=True)

@@ -86,7 +86,7 @@ def index(request):
                         "time": time,
                     }
                 )
-        print(obj)
+        #print(obj)
 
         # Applying Pagination
         paginator = Paginator(obj, 4)
@@ -184,7 +184,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User(username=username,email=email,password=password)
+            user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
             return render(
@@ -295,8 +295,8 @@ def get_question(request, id):
             if request.user.id == vote.user.id:
                 downvote = True
 
-        print(upvote)
-        print(downvote)
+       # print(upvote)
+       #print(downvote)
 
         # Calculating time since question is asked
         dd = datetime.now(timezone.utc) - que.date
@@ -470,6 +470,7 @@ def deleteAns(request):
         que.no_answer -= 1
         que.save()
         ans.delete()
+        user.save()
         return HttpResponse("Answer deleted sucessfully", status=200)
 
 

@@ -142,6 +142,7 @@ It implements the edit, delete, save and close button for answer asynchronously.
  Clone the application `git clone url`  <br />go to directory then<br /> `python manage.py makemigrations`
 <br /> `python manage.py migrate`
 <br /> `python manage.py runserver` <br />
+ This will lead to running application which could be accessed on http://127.0.0.1:8000/
  ### Create a super user: 
  `python manage.py createsuperuser`
 

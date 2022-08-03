@@ -21,7 +21,7 @@ The questions asked by the user can be written in Markdown format and posted.
 <li>User can also attach some tags of topics on which the question is based upon.
 </li>
 <li>
-This tags also been used in way that users can filter questions related to a particular tag by clicking on it.
+These tags also been used in way that users can filter questions related to a particular tag by clicking on it.
 </li>
 
 <li>

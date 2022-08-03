@@ -77,7 +77,6 @@ The above functionalities  depicts the <b>distinctiveness and complexity</b> of 
 <br />
 
  # Structure of the Application: Askflow
-
 It's a Django based application the application directory Capstone consists 2 sub dirs capstone and overflow, 3 files manage.py, db.sqlite3 and readme.md. <br />
 Let's start with manage.py
 
@@ -88,16 +87,12 @@ The file contains the code for running the server, makemigrations or migrations,
 ### db.sqlite3 <br />
 This is a sqlite3 default database that django provides used as a database in our project.
 
-<br />
 
 ### capstone Directory
  It consists of configuration files for the project. I have only made changes to <b>settings.py</b> and <b>urls.py</b> by adding a overflow as a installed app and including overflow/urls.py path in urls.py.
 
-<br />
-
  ## overflow
  It's our main application.
-
  ### overflow/models.py
  Models.py represents the models of web applications in the form of classes. They defines the structure of the database. It has 7 django models. The 7 models are:
 <br /> User - storing user data <br />

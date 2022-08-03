@@ -33,7 +33,7 @@ It includes a search bar which could be used to search for questions.
 </li>
 
 <li>
-Questions consits for title and description. Search bar results in the list of question-titles with their respective Author's name and number of answers posted by the community for that question.   
+Questions consit of title and description. Search bar results in the list of question-titles with their respective Author's name and number of answers posted by the community for that question.   
 </li>
 
 <li>

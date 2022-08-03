@@ -5,7 +5,7 @@
 <br />
 
 # Distinctiveness and Complexity
- Now this project which i have named <b>AskOverflow</b> is fairley distinct and even closely from any other applications in this course. <br />Below I have broken down its functionality to help assess its distinctiveness and complexity.
+ Now this project which i have named <b>AskOverflow</b> is fairley distinct and not even closely similar from any other applications in this course. <br />Below I have broken down its functionality to help assess its distinctiveness and complexity.
 
 ### Functionlities of the application
 <ul>  

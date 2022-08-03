@@ -7,7 +7,6 @@ class User(AbstractUser):
     """name(string), joined_date(auto),
     answers(default=0), questions(default=0),
     """
-    name = models.CharField(max_length=100, blank=True)
     joined_date = models.DateTimeField(auto_now_add=True)
     answers = models.IntegerField(default=0)
     questions = models.IntegerField(default=0)

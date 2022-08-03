@@ -184,7 +184,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User(username=username,email=email,password=password)
             user.save()
         except IntegrityError:
             return render(
@@ -512,6 +512,7 @@ def profile(request,id):
             "overflow/profile.html",
             {
                 "objects": page_obj,
+                "User": user,
             },
     )
 

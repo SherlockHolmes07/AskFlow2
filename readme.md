@@ -7,9 +7,7 @@
 # Distinctiveness and Complexity
  Now this project which i have named <b>AskOverflow</b> is fairley distinct and even closely from any other applications in this course. <br />Below I have broken down its functionality to help assess its distinctiveness and complexity.
 
-<br />
-
-## Functionlities of the application
+### Functionlities of the application
 <ul>  
 <li> User has ability to both register and login </li>
 
@@ -75,7 +73,7 @@ Questions consits for title and description. Search bar results in the list of q
 
 The above functionalities  depicts the <b>distinctiveness and complexity</b> of the application and as for the other required features as mentioned  the  project utilizes<b> Django, Javascript and it has  7 models </b> including user model and the application is also <b> mobile responsive </b>.
 
-<br />
+<hr />
 <br />
 
  # Structure of the Application: Askflow

@@ -1,0 +1,28 @@
+{% extends "overflow/layout.html" %} 
+
+{% block body %}
+<div class="index">
+
+    <h2>Ask a public question</h2>
+
+    <form action="{% url 'saveQue' %}" method="post" id="askForm">
+      {% csrf_token %}
+      <div class="ele">
+      <h4>{{form.title.label}}</h4>
+        {{form.title}}
+      </div>
+
+      <div class="ele">
+        <h4>{{form.body.label}}</h4>
+          {{form.body}}
+      </div>
+
+      <div class="ele">
+      <h4>{{form.tags.label}}</h4>
+       {{form.tags}}
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-4 mb-4" id="post-que" value="Post question">
+    </form> 
+
+</div>
+{% endblock %}

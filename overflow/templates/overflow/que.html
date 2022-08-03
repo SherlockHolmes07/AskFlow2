@@ -1,0 +1,201 @@
+{% extends "overflow/layout.html" %} 
+
+{% block body %}
+<div class="index">
+     
+  <h4> {{question.title}} </h4>
+  <!--Asked: time-->
+  {% if days == "0 days" %}
+  <span id="time"><b>Asked by {{question.user.username}}</b> {{time}} ago</span>
+  {% else %}
+  <span id="time"><b>Asked by {{question.user.username}}</b> {{days}} ago</span>
+  {%endif%}
+
+  <hr />
+
+  <!--Que Body-->
+  <div class="body-vote">
+
+
+    {% if user.is_authenticated %} 
+    <div class="vote">
+
+        {% if upvote %}
+        <img
+            src="../static/overflow/upvote-fill.svg"
+            class="me-2"
+            height="50"
+            alt="Logo"
+            loading="lazy"
+            id="upvote"
+            data-bool="true"
+            name="{{question.id}}upvote"
+            data-id="{{question.id}}"
+            fill="black"
+        />
+        {% else %}
+        <img
+            src="../static/overflow/upvote.svg"
+            class="me-2"
+            height="50"
+            alt="Logo"
+            loading="lazy"
+            id="upvote"
+            data-bool="false"
+            name="{{question.id}}upvote"
+            data-id="{{question.id}}"
+            fill="black"
+        />
+        {% endif %}
+        <span class="up__vote">{{question.upvotes}}</span>
+
+        {% if downvote %}
+        <img
+            src="../static/overflow/downvote-filled.svg"
+            class="me-2"
+            width="40"
+            alt="Logo"
+            loading="lazy"
+            id="downvote"
+            data-bool="true"
+            name="{{question.id}}downvote"
+            data-id="{{question.id}}"
+        />
+        {% else %}
+        <img
+            src="../static/overflow/downvote.svg"
+            class="me-2"
+            width="40"
+            alt="Logo"
+            loading="lazy"
+            id="downvote"
+            data-bool="false"
+            name="{{question.id}}downvote"
+            data-id="{{question.id}}"
+        />
+        {% endif %}
+
+        <span class="down__vote">{{question.downvotes}}</span>
+    </div>
+    {% endif %}
+
+    <div class="question-body mb-4" id="que-cunt">
+      <span id="que-body-js">{{body|safe}}</span>
+
+
+      
+
+      {% if user == question.user %}
+      <button type="button" class="btn edit" id="edit-que">Edit</button>
+
+      <!--Delete button-->
+      <form action="{% url 'deleteQue' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="que_id" value="{{question.id}}" name="id">
+        <input type="submit" class="btn delete" value="Delete">
+      </form>
+
+      {% endif %}
+
+    </div>
+
+    <form class="question-body mb-4" id="que-form">
+       <textarea class="form-control" rows="5" id="textareaQ">{{body}}</textarea>
+       <input type="submit" class="btn btn-success mt-2" value="Save" id="submit-btn">
+       <button type="button" class="btn mt-2" id="close-que">Close</button>
+    </form>
+
+
+  </div>
+
+   
+  <div class="d-flex justify-content-start pl-10" id="tag-spe" style="margin-bottom: 20px; flex-wrap: wrap;">
+    {% for tag in tags %}
+    <a id="tag" class="btn" href="{% url 'tag' tag.tag %}">{{ tag.tag }}</a>
+    {% endfor %}
+  </div>
+
+
+  <!--Comments Elements-->
+  <div class="comments">
+       
+    <!--Loop over comments-->
+    {% for comment in comments %}
+    <div class="comment-element mt-2">
+      <p>{{comment.body|safe}}</p>
+      <a href="{% url 'profile' comment.user.id %}" class="comment-writer" style="font-size: 13px;"><p>{{comment.user.username}} {{comment.date}}</p></a>
+    </div>
+    {% endfor %}
+
+    <!--Comment Form-->
+    {% if user.is_authenticated %}
+    <form action="{% url 'addCommentQ' %}" method="post">
+        {% csrf_token %} 
+        <input type="hidden" name="id" value="{{question.id}}">
+        <textarea class="form-control mt-3" name="comment" placeholder="Add a Comment"></textarea>
+        <input type="submit" value="Comment" class="btn btn-success mt-2 mb-2">
+    </form>
+    {% else %}
+    <div class="comment-element mt-4 p-3">
+         <h5 style="color: #AC5362;">Login to write a comment</h5>
+    </div>
+    {% endif %}
+  </div>
+
+  <hr />
+  <h4><span id="no_answers">{{question.no_answer}}</span> Answer</h4>
+
+  <!--Answer container-->
+  <div class="all_answers">
+
+    <!--Loop over answers-->
+    {% for answer in answers %}
+    <div class="answer_elements" id="answer_elements{{answer.id}}">
+
+        <div id="ansele{{answer.id}}">
+        <span id="sanedo{{answer.id}}">{{answer.body|safe}}</span>
+        <a href="{% url 'profile' answer.user.id %}" class="comment-writer" style="font-size: 13px;"><p>{{answer.user.username}} {{answer.date}}</p></a>
+
+        {% if user == answer.user %}
+           <button type="button" class="btn" style="background-color: #38D1E4;" id="ans-edit-btn" value="{{answer.id}}">Edit</button>
+           <button type="button" class="btn" id="delete-ans" value="{{answer.id}}">Delete</button>
+        {% endif %}
+
+        </div>
+        {% if user == answer.user %}
+        <form id="anseditform{{answer.id}}" class="ans-edit-form" name="{{answer.id}}">
+          <textarea class="form-control" id="ta-ans-form{{answer.id}}" rows="5">{{answer.body}}</textarea>
+          <input type="submit" class="btn btn-success mt-2" value="Save" id="save-ans-e">
+          <button type="button" class="btn mt-2" id="close-ans-e" value={{answer.id}}>Close</button>
+        </form>
+        {% endif %}
+    </div>
+    {% empty %}
+    <div class="answer_elements">
+      <h4>No answers yet.</h4>
+    </div>
+    {% endfor %}
+
+   <br />
+   <!--Post Answer-->
+   <h4>Your Answer</h4>
+
+
+   {% if user.is_authenticated %} 
+   <form method="post" action="{% url 'postAnswer' %}">
+     {% csrf_token %}
+    <input type="hidden" value="{{question.id}}" name="id">
+    <textarea name="answer" class="form-control mt-3" rows="8" placeholder="Your Answer" id="ans-form">
+    </textarea>
+    <input type="submit" class="btn btn-success mt-2" value="Post Answer" id="submit-btn">
+   </form>
+   {% else %}
+   <div class="answer_elements mt-4">
+    <h5 style="color: #AC5362;">Login to Answer</h5>
+   </div>
+   {% endif %}
+
+  </div>
+
+</div>
+{% endblock %}

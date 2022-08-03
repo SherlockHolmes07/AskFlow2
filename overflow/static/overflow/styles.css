@@ -1,0 +1,55 @@
+body{
+    background-color: #EFF4F8;
+    font-family: 'Catamaran', sans-serif;
+
+
+}
+#overflow{
+    color: rgb(180, 254, 235);
+    font-size: larger;
+}
+
+#HomeB{
+    cursor: pointer;
+    padding: 4px;
+}
+
+#HomeB:hover{
+    background-color: #FD86A5;
+    border-radius: 2px;
+}
+
+#search{
+    width: 50%;
+}
+
+a{
+    text-decoration: none;
+}
+#downvote{
+    cursor: pointer;
+}
+#upvote{
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 450px) {
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .nav{
+        width: 110%;
+    }
+
+    #search{
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+}

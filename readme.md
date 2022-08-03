@@ -136,9 +136,7 @@ Then it conatins 2 css files:
 It implements the edit question functionality asynchronously also implements save and close buttons.
  ### edit_ans.js:
 It implements the edit, delete, save and close button for answer asynchronously.
-
 <br />
-
  # How to run the Application
  Python, Pip and Django are need to be preinstalled. <br />
  Clone the application `git clone url`  <br />go to directory then<br /> `python manage.py makemigrations`
